@@ -1,0 +1,15 @@
+.section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 45px;
+}
+
+.section a {
+    color: #BFFFC3;
+}
+
+.section a:hover,
+.section a:focus {
+    color: #81FE88;
+}
