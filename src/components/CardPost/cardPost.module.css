@@ -1,0 +1,19 @@
+.article {
+    width: 486px;
+    height: 431px;
+    color: #BCBCBC;
+}
+
+
+.figure {
+    width: 438px;
+    height: 133px;
+    margin: 0px;
+    background: #BCBCBC;
+    border-radius: 8px;
+}
+
+.section {
+    height: 250px;
+    padding: 16px 16px 16px 16px;
+}
