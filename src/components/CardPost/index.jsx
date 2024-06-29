@@ -7,7 +7,7 @@ export const CardPost = ({ post }) => {
     return (
         <article className={styles.article}>
             <header>
-                <figure>
+                <figure className={styles.figure}>
                     <Image 
                         src={post.cover} 
                         width={438} 
@@ -16,11 +16,11 @@ export const CardPost = ({ post }) => {
                     />
                 </figure>
             </header>
-            <section>
+            <section className={styles.section}>
                 <h2>{post.title}</h2>
-                <p>{post.body}</p>
+                <p className={styles.p}>{post.body}</p>
             </section>
-            <footer>
+            <footer className={styles.footer}>
                 <Avatar imageSrc={post.author.avatar} name={post.author.username}/>
             </footer>
         </article>

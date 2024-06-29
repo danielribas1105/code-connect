@@ -2,18 +2,33 @@
     width: 486px;
     height: 431px;
     color: #BCBCBC;
+    background: #171D1F;
+    border-radius: 8px;
 }
 
 
 .figure {
     width: 438px;
     height: 133px;
-    margin: 0px;
     background: #BCBCBC;
-    border-radius: 8px;
+    padding: 24px;
+    border-radius: 8px 8px 0 0;
 }
 
 .section {
-    height: 250px;
-    padding: 16px 16px 16px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.p {
+    text-align: justify;
+}
+
+.footer {
+    padding: 16px;
+    display: flex;
+    justify-content: flex-end;
 }
