@@ -1,0 +1,18 @@
+.main {
+    width: 993px;
+    display: flex;
+    flex-direction: column;
+    color: #888888;
+}
+
+.section {
+    margin-top: 24px;
+}
+
+.section div {
+    max-height: 250px;
+    overflow-y: scroll;
+    background: #171D1F;
+    border-radius: 8px;
+    padding: 16px;
+}

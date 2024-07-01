@@ -4,22 +4,22 @@ import styles from "./cardPost.module.css"
 import { Avatar } from "../Avatar"
 import Link from "next/link"
 
-export const CardPost = ({ post }) => {
+export const CardPost = ({ post, highlight }) => {
     return (
         <Link href={`/posts/${post.slug}`}>
-            <article className={styles.article}>
-                <header>
-                    <figure className={styles.figure}>
+            <article className={styles.article} style={{ width: highlight ? 993 : 486}}>
+                <header className={styles.header}>
+                    <figure style={{ height: highlight ? 300 : 133}}>
                         <Image 
                             src={post.cover} 
-                            width={438} 
-                            height={133} 
+                            fill
                             alt={`Capa do post de título: ${post.title}`}
+                            style={{ 'border-radius': '8px'}}
                         />
                     </figure>
                 </header>
                 <section className={styles.section}>
-                    <h2>{post.title}</h2>
+                    <h3>{post.title}</h3>
                     <p className={styles.p}>{post.body}</p>
                 </section>
                 <footer className={styles.footer}>

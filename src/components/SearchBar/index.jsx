@@ -1,9 +1,11 @@
+import styles from "./searchBar.module.css";
+
 export const SearchBar = () => {
     return (
-        <>
-            <input/>
-            <button>Teste</button>
-        </>
+        <div className={styles.div}>
+            <input type="text" className={styles.input} placeholder="Digite o que você procura"/>
+            <button className={styles.button}>Buscar</button>
+        </div>
     )
 }
 

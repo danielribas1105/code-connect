@@ -1,18 +1,18 @@
 .article {
-    width: 486px;
-    height: 431px;
     color: #BCBCBC;
     background: #171D1F;
     border-radius: 8px;
 }
 
-
-.figure {
-    width: 438px;
-    height: 133px;
+.header {
+    border-radius: 8px 8px 0 0;
     background: #BCBCBC;
     padding: 24px;
-    border-radius: 8px 8px 0 0;
+}
+
+.header figure {
+    position: relative;
+    border-radius: 8px;
 }
 
 .section {

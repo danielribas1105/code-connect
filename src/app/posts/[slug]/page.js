@@ -3,7 +3,8 @@ import html from 'remark-html';
 import logger from "@/logger";
 import styles from "./post.module.css";
 
-import search, { SearchBar } from "@/components/SearchBar";
+import { SearchBar } from "@/components/SearchBar";
+import { CardPost } from '@/components/CardPost';
 
 async function getPostBySlug(slug) {
     const response = await fetch(`http://localhost:3042/posts?slug=${slug}`)
@@ -33,11 +34,15 @@ const PagePost = async ({ params }) => {
     const post = await getPostBySlug(params.slug);
     return (
         <>
-            <main>
+            <main className={styles.main}>
                 <SearchBar/>
+                <CardPost post={post} highlight/>
+                <section className={styles.section}>
+                    <h2>Código</h2>
+                    <div dangerouslySetInnerHTML={{ __html: post.markdown }} />
+                </section>
             </main>
-            <h1 style={{ color: "white" }}>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: post.markdown }} />
+            
         </>
     )
 }
