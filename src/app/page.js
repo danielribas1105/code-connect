@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CardPost } from "@/components/CardPost";
 import styles from "./page.module.css";
 import logger from "@/logger";
+import db from "../../prisma/db";
 
 /* const post = {
   "id": 1,
@@ -20,14 +21,23 @@ import logger from "@/logger";
 } */
 
 async function getAllPosts(page) {
-  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`)
+  /* const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`)
 
   if(!response.ok){
     logger.error("Ops! Algo errado ocorreu!")
     return []
   }
   logger.info("Posts obtidos com sucesso!")
-  return response.json()
+  return response.json() */
+  try {
+
+    const posts = await db.post.findMany()
+    return { data: posts, prev: null, next: null }
+
+  } catch (error) {
+    logger.error('Falha ao obter posts', { error })
+    return { data: [], prev: null, next: null }
+  }
 }
 
 export default async function Home({ searchParams }) {
