@@ -596,3 +596,13 @@
 {"level":"info","message":"Posts obtidos com sucesso!"}
 {"level":"info","message":"Posts obtidos com sucesso!"}
 {"level":"info","message":"Posts obtidos com sucesso!"}
+{"level":"info","message":"Posts obtidos com sucesso!"}
+{"error":{},"level":"error","message":"Falha ao obter post selecionado"}
+{"error":{},"level":"error","message":"Falha ao obter post selecionado"}
+{"error":{},"level":"error","message":"Falha ao obter post selecionado"}
+{"error":{},"level":"error","message":"Falha ao obter post selecionado"}
+{"error":{},"level":"error","message":"Falha ao obter post selecionado"}
+{"error":{},"level":"error","message":"Falha ao obter post selecionado"}
+{"error":{},"level":"error","message":"Falha ao obter post selecionado"}
+{"error":{},"level":"error","message":"Falha ao obter post selecionado","slug":"gerenciamento-de-estado-com-reduxee"}
+{"error":{},"level":"error","message":"Falha ao obter post selecionado","slug":"gerenciamento-de-estado-com-redux44"}
