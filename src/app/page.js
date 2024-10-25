@@ -1,9 +1,8 @@
-import Link from "next/link";
-
-import { CardPost } from "@/components/CardPost";
-import styles from "./page.module.css";
-import logger from "@/logger";
-import db from "../../prisma/db";
+import Link from "next/link"
+import { CardPost } from "@/components/CardPost"
+import styles from "./page.module.css"
+import logger from "@/logger"
+import db from "../../prisma/db"
 
 /* const post = {
   "id": 1,
@@ -21,37 +20,50 @@ import db from "../../prisma/db";
 } */
 
 async function getAllPosts(page) {
-  /* const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`)
+   /* const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`)
+ 
+   if(!response.ok){
+     logger.error("Ops! Algo errado ocorreu!")
+     return []
+   }
+   logger.info("Posts obtidos com sucesso!")
+   return response.json() */
+   try {
 
-  if(!response.ok){
-    logger.error("Ops! Algo errado ocorreu!")
-    return []
-  }
-  logger.info("Posts obtidos com sucesso!")
-  return response.json() */
-  try {
+      const perPage = 4
+      const skip = (page - 1) * perPage
+      const totalItens = await db.post.count()
+      const totaPages = Math.ceil(totalItens / perPage)
+      const prev = page > 1 ? page - 1 : null
+      const next = page < totaPages ? page + 1 : null 
+      const posts = await db.post.findMany({
+         take: perPage,
+         skip: skip,
+         orderBy: { createdAt: 'desc' },
+         include: {
+            author: true
+         }
+      })
+      return { data: posts, prev: prev, next: next }
 
-    const posts = await db.post.findMany()
-    return { data: posts, prev: null, next: null }
-
-  } catch (error) {
-    logger.error('Falha ao obter posts', { error })
-    return { data: [], prev: null, next: null }
-  }
+   } catch (error) {
+      logger.error('Falha ao obter posts', { error })
+      return { data: [], prev: null, next: null }
+   }
 }
 
 export default async function Home({ searchParams }) {
-  const currentPage = searchParams?.page || 1
-  const { data: posts, prev, next } = await getAllPosts(currentPage);
-  return (
-    <>
-      <main className="grid">
-        {posts.map(post => <CardPost key={post.id} post={post}/>)}
-      </main>
-      <section className={styles.section}>
-        {prev && <Link href={`/?page=${prev}`}>Página anterior</Link>}
-        {next && <Link href={`/?page=${next}`}>Próxima página</Link>}
-      </section>
-    </>
-  )
+   const currentPage = parseInt(searchParams?.page || 1)
+   const { data: posts, prev, next } = await getAllPosts(currentPage);
+   return (
+      <>
+         <main className="grid">
+            {posts.map(post => <CardPost key={post.id} post={post} />)}
+         </main>
+         <section className={styles.section}>
+            {prev && <Link href={`/?page=${prev}`}>Página anterior</Link>}
+            {next && <Link href={`/?page=${next}`}>Próxima página</Link>}
+         </section>
+      </>
+   )
 }
