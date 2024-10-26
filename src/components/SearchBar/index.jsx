@@ -1,12 +1,19 @@
-import styles from "./searchBar.module.css";
+import { Button } from "../Button"
+import styles from "./searchBar.module.css"
 
 export const SearchBar = () => {
-    return (
-        <div className={styles.div}>
-            <input type="text" className={styles.input} placeholder="Digite o que você procura"/>
-            <button className={styles.button}>Buscar</button>
-        </div>
-    )
+   return (
+      <form className={styles.form} action='/'>
+         <input
+            name='q'
+            className={styles.input}
+            placeholder='Digite o que você procura'
+         />
+         <Button>
+            Buscar
+         </Button>
+      </form>
+   )
 }
 
 /* json-server posts.json -p 3042 */
