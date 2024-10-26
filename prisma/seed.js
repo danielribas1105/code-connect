@@ -118,7 +118,7 @@ async function main() {
 
    posts.forEach(async (post) => {
       await prisma.post.upsert({
-         where: { slug: post.slug },
+         where: { id: post.id },
          update: {},
          create: post
       })
